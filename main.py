@@ -26,6 +26,7 @@ with open(file_path, 'rb') as f:
 events = []
 for component in cal.walk():
     if component.name == "VEVENT":
+        event = {}
         summary_str = sanitize_string(str(component.get('summary')))
         event['SUMMARY'] = summary_str[:30]  # Only take the first 30 characters
         event['START'] = sanitize_string(str(component.get('dtstart').dt))
